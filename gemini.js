@@ -71,47 +71,47 @@ webApp.post('/dialogflow', async (req, res) => {
     }
     function hi(agent) {
         console.log(`intent  =>  hi`);
-        agent.add('Hi,Im your Saylani Registration form Assistant,How can i help you today!!')
+        agent.add('Hi,Im your Saylani Registration form Assistant,How can i help you today!!📚✨')
     }
 
     function email(agent) {
         console.log(`intent  =>  email`);
-        agent.add('My email is sherrymerry20@gmail.com!!')
+        agent.add('My email is sherrymerry20@gmail.com📚✨')
     }
 
     function phone(agent) {
         console.log(`intent  =>  phone`);
-        agent.add('My phone number is 03242080440')
+        agent.add('My phone number is 03242080440📚✨')
     }
 
     function cnic(agent) {
         console.log(`intent  =>  cnic`);
-        agent.add('My cnic no. is 42101-9343232-9!')
+        agent.add('My cnic no. is 42101-9343232-9📚✨')
     }
 
     function Dateofbirth(agent) {
         console.log(`intent  =>  Dateofbirth`);
-        agent.add('My Date of birth is 17/11/2002!')
+        agent.add('My Date of birth is 17/11/2002📚✨')
     }
 
-    function fullname(agent) {
-        console.log(`intent  =>  fullname`);
-        agent.add('My fullname is Shahryar waseem!')
+    function Fullname(agent) {
+        console.log(`intent  =>  Fullname`);
+        agent.add('My fullname is Shahryar waseem📚✨')
     }
 
     function Gender(agent) {
         console.log(`intent  =>  Gender`);
-        agent.add('Male')
+        agent.add('Male📚✨')
     }
   
     function Qualification(agent) {
         console.log(`intent  =>  Qualification`);
-        agent.add('My last qualification is intermediate!')
+        agent.add('My last qualification is intermediate📚✨')
     }
 
     function Address(agent) {
         console.log(`intent  =>  Address`);
-        agent.add('My address is nazimabad no.2 karachi')
+        agent.add('My address is nazimabad no.2 karachi📚✨')
     }
 
     let intentMap = new Map();
@@ -121,7 +121,7 @@ webApp.post('/dialogflow', async (req, res) => {
     intentMap.set('phone', phone);
     intentMap.set('cnic', cnic);
     intentMap.set('Dateofbirth', Dateofbirth);
-    intentMap.set('fullname', fullname);
+    intentMap.set('fullname', Fullname);
     intentMap.set('Gender', Gender);
     intentMap.set('Qualification', Qualification);
     intentMap.set('Address', Address);
@@ -131,3 +131,33 @@ webApp.post('/dialogflow', async (req, res) => {
 webApp.listen(PORT, () => {
     console.log(`Server is up and running at http://localhost:${PORT}/`);
 });
+
+
+const nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+  host: "smtp.ethereal.email",
+  port: 587,
+  secure: false, // Use `true` for port 465, `false` for all other ports
+  auth: {
+    user: "maddison53@ethereal.email",
+    pass: "jn7jnAPss4f63QBp6D",
+  },
+});
+
+// async..await is not allowed in global scope, must use a wrapper
+async function main() {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: '"Maddison Foo Koch 👻" <sherrymerry20@gmail.com>', // sender address
+    to: "hammadn788@gmail.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+}
+
+main().catch(console.error);
