@@ -1,0 +1,5 @@
+authtoken: YOUR_AUTH_TOKEN
+tunnels:
+  my_tunnel:
+    proto: http
+    addr: 5005
