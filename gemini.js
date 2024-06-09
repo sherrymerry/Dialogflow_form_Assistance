@@ -1,10 +1,8 @@
-const {
-    GoogleGenerativeAI,
-    HarmCategory,
-    HarmBlockThreshold,
-} = require("@google/generative-ai");
-const { WebhookClient, Payload } = require('dialogflow-fulfillment');
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { WebhookClient } = require('dialogflow-fulfillment');
 const express = require("express");
+const nodemailer = require("nodemailer");
+
 const MODEL_NAME = "gemini-1.5-pro";
 const API_KEY = "AIzaSyBs_03P9KQaugVW30YImzPz12UczxWy_qk"; // Replace with your Gemini API key
 
@@ -33,14 +31,25 @@ const webApp = express();
 const PORT = process.env.PORT || 5005;
 webApp.use(express.urlencoded({ extended: true }));
 webApp.use(express.json());
-webApp.use((req, res, next) => {
-    console.log(`Path ${req.path} with Method ${req.method}`);
-    next();
+
+const transporter = nodemailer.createTransport({
+    host: "smtp.ethereal.email",
+    port: 587,
+    secure: false,
+    auth: {
+        user: "maddison53@ethereal.email",
+        pass: "jn7jnAPss4f63QBp6D",
+    },
 });
-webApp.get('/', (req, res) => {
-    res.sendStatus(200);
-    res.send("Status Okay")
-});
+
+async function sendEmail(subject, html) {
+    const info = await transporter.sendMail({
+        from: '"Shahryar waseem👻" <sherrymerry20@gmail.com>',
+        to: "hammadn788@gmail.com",
+        subject: subject,
+        html: html,
+    });
+}
 
 webApp.post('/dialogflow', async (req, res) => {
     const agent = new WebhookClient({ request: req, response: res });
@@ -52,10 +61,8 @@ webApp.post('/dialogflow', async (req, res) => {
         if (action === 'input.unknown') {
             let result = await runChat(queryText);
             agent.add(result);
-            console.log(result)
         } else {
             agent.add(result);
-            console.log(result)
         }
     }
 
@@ -64,43 +71,57 @@ webApp.post('/dialogflow', async (req, res) => {
     }
 
     function email(agent) {
-        console.log(`intent  =>  email`);
-        agent.add('My email is sherrymerry20@gmail.com📚✨')
+        const emailHtml = `
+          <h1>Registration Form Details</h1>
+          <p>Thank you for contacting us! Here are your registration form details:</p>
+          <ul>
+            <li>Name: Shahryar Waseem</li>
+            <li>Email: sherrymerry20@gmail.com</li>
+            <li>Phone: 03242080440</li>
+            <li>CNIC: 42101-9343232-9</li>
+            <li>Date of Birth: 17/11/2002</li>
+            <li>Full Name: Shahryar Waseem</li>
+            <li>Gender: Male</li>
+            <li>Qualification: Intermediate</li>
+            <li>Address: Nazimabad no.2 Karachi</li>
+          </ul>
+        `;
+
+        try {
+            sendEmail("Registration Form Details", emailHtml);
+            agent.add('Your registration details have been sent to your email.');
+        } catch (error) {
+            console.error("Error sending email:", error);
+            agent.add("There was an error sending the email. Please try again later.");
+        }
     }
 
     function phone(agent) {
-        console.log(`intent  =>  phone`);
-        agent.add('My phone number is 03242080440📚✨')
-    }    
+        agent.add('My phone number is 03242080440📚✨');
+    }
 
     function cnic(agent) {
-        console.log(`intent  =>  cnic`);
-        agent.add('My cnic no. is 42101-9343232-9📚✨')
+        agent.add('My cnic no. is 42101-9343232-9📚✨');
     }
 
     function dateofbirth(agent) {
-        console.log(`intent  =>  dateofbirth`);
-        agent.add('My Date of birth is 17/11/2002📚✨')
+        agent.add('My Date of birth is 17/11/2002📚✨');
     }
 
     function fullname(agent) {
-        console.log(`intent  =>  fullname`);
-        agent.add('My Fullname is Shahryar waseem📚✨')
+        agent.add('My Fullname is Shahryar waseem📚✨');
     }
 
     function gender(agent) {
-        console.log(`intent  =>  gender`);
-        agent.add('Male📚✨')
+        agent.add('Male📚✨');
     }
 
     function qualification(agent) {
-        console.log(`intent  =>  qualification`);
-        agent.add('My last qualification is intermediate📚✨')
+        agent.add('My last qualification is intermediate📚✨');
     }
 
     function address(agent) {
-        console.log(`intent  =>  address`);
-        agent.add('My address is nazimabad no.2 karachi📚✨')
+        agent.add('My address is nazimabad no.2 karachi📚✨');
     }
 
     let intentMap = new Map();
@@ -120,33 +141,3 @@ webApp.post('/dialogflow', async (req, res) => {
 webApp.listen(PORT, () => {
     console.log(`Server is up and running at http://localhost:${PORT}/`);
 });
-
-
-const nodemailer = require("nodemailer");
-
-const transporter = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
-  port: 587,
-  secure: false, // Use `true` for port 465, `false` for all other ports
-  auth: {
-    user: "maddison53@ethereal.email",
-    pass: "jn7jnAPss4f63QBp6D",
-  },
-});
-
-// async..await is not allowed in global scope, must use a wrapper
-async function main() {
-  // send mail with defined transport object
-  const info = await transporter.sendMail({
-    from: '"Shahryar waseem👻" <sherrymerry20@gmail.com>', // sender address
-    to: "hammadn788@gmail.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
-  });
-
-  console.log("Message sent: %s", info.messageId);
-  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-}
-
-main().catch(console.error);
