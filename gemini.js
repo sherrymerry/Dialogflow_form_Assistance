@@ -96,9 +96,9 @@ webApp.post('/dialogflow', async (req, res) => {
         }
     }
 
-    // function phone(agent) {
-    //     agent.add('My phone number is 03242080440📚✨');
-    // }
+    function phone(agent) {
+        agent.add('Hi, Iam your Saylani Registration form Assistant, how can I help you today!! 📚✨');
+    }
 
     function cnic(agent) {
         agent.add('My cnic no. is 42101-9343232-9📚✨');
