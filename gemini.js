@@ -96,8 +96,12 @@ webApp.post('/dialogflow', async (req, res) => {
         }
     }
 
-    function phone(agent) {
+    function welcome(agent) {
         agent.add('Hi, Iam your Saylani Registration form Assistant, how can I help you today!! 📚✨');
+    }
+
+    function phone(agent) {
+        agent.add('My phone number is 03242080440📚✨');
     }
 
     function cnic(agent) {
@@ -128,6 +132,7 @@ webApp.post('/dialogflow', async (req, res) => {
     intentMap.set('Default Welcome Intent', hi);
     intentMap.set('Default Fallback Intent', fallback);
     intentMap.set('Emails', email);
+    intentMap.set('Welcome', welcome);
     intentMap.set('Phone-no', phone);
     intentMap.set('Cnic_no', cnic);
     intentMap.set('Dateofbirth', dateofbirth);
