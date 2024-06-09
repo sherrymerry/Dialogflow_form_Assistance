@@ -19,11 +19,6 @@ app.post("/webhook", async (req, res) => {
         agent.add("Welcome to Sayalni! 🌟 We're excited to have you with us. Let's learn and grow together! 📚✨")
     }
 
-    // function regsitration(agent) {
-    //     console.log(`intent  =>  hi`);
-    //     agent.add("")
-    // }
-
     function sendNotes(agent) {
         const { number , date , email} = agent.parameters;
        agent.add("")
@@ -31,7 +26,6 @@ app.post("/webhook", async (req, res) => {
 
     let intentMap = new Map();
     intentMap.set('Default Welcome Intent', hi); 
-    // intentMap.set('Registration', registration); 
     intentMap.set('sendNotes', sendNotes);
     agent.handleRequest(intentMap);
 })

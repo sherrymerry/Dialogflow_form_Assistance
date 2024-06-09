@@ -3,15 +3,13 @@ const {
     HarmCategory,
     HarmBlockThreshold,
 } = require("@google/generative-ai");
-const dialogflow = require('@google-cloud/dialogflow');
 const { WebhookClient, Payload } = require('dialogflow-fulfillment');
 const express = require("express");
 const MODEL_NAME = "gemini-1.5-pro";
-const API_KEY = "AIzaSyBs_03P9KQaugVW30YImzPz12UczxWy_qk";
+const API_KEY = "AIzaSyBs_03P9KQaugVW30YImzPz12UczxWy_qk"; // Replace with your Gemini API key
 
 async function runChat(queryText) {
     const genAI = new GoogleGenerativeAI(API_KEY);
-    // console.log(genAI)
     const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
     const generationConfig = {
@@ -23,8 +21,7 @@ async function runChat(queryText) {
 
     const chat = model.startChat({
         generationConfig,
-        history: [
-        ],
+        history: [],
     });
 
     const result = await chat.sendMessage(queryText);
@@ -34,9 +31,7 @@ async function runChat(queryText) {
 
 const webApp = express();
 const PORT = process.env.PORT || 5005;
-webApp.use(express.urlencoded({
-    extended: true
-}));
+webApp.use(express.urlencoded({ extended: true }));
 webApp.use(express.json());
 webApp.use((req, res, next) => {
     console.log(`Path ${req.path} with Method ${req.method}`);
@@ -48,13 +43,7 @@ webApp.get('/', (req, res) => {
 });
 
 webApp.post('/dialogflow', async (req, res) => {
-
-    var id = (res.req.body.session).substr(43);
-    console.log(id)
-    const agent = new WebhookClient({
-        request: req,
-        response: res
-    });
+    const agent = new WebhookClient({ request: req, response: res });
 
     async function fallback() {
         let action = req.body.queryResult.action;
@@ -64,14 +53,14 @@ webApp.post('/dialogflow', async (req, res) => {
             let result = await runChat(queryText);
             agent.add(result);
             console.log(result)
-        }else{
+        } else {
             agent.add(result);
             console.log(result)
         }
     }
+
     function hi(agent) {
-        console.log(`intent  =>  hi`);
-        agent.add('Hi,Im your Saylani Registration form Assistant,How can i help you today!!📚✨')
+        agent.add('Hi, I\'m your Saylani Registration form Assistant, how can I help you today!! 📚✨');
     }
 
     function email(agent) {
@@ -82,49 +71,49 @@ webApp.post('/dialogflow', async (req, res) => {
     function phone(agent) {
         console.log(`intent  =>  phone`);
         agent.add('My phone number is 03242080440📚✨')
-    }
+    }    
 
     function cnic(agent) {
         console.log(`intent  =>  cnic`);
         agent.add('My cnic no. is 42101-9343232-9📚✨')
     }
 
-    function Dateofbirth(agent) {
-        console.log(`intent  =>  Dateofbirth`);
+    function dateofbirth(agent) {
+        console.log(`intent  =>  dateofbirth`);
         agent.add('My Date of birth is 17/11/2002📚✨')
     }
 
-    function Fullname(agent) {
-        console.log(`intent  =>  Fullname`);
-        agent.add('My fullname is Shahryar waseem📚✨')
+    function fullname(agent) {
+        console.log(`intent  =>  fullname`);
+        agent.add('My Fullname is Shahryar waseem📚✨')
     }
 
-    function Gender(agent) {
-        console.log(`intent  =>  Gender`);
+    function gender(agent) {
+        console.log(`intent  =>  gender`);
         agent.add('Male📚✨')
     }
-  
-    function Qualification(agent) {
-        console.log(`intent  =>  Qualification`);
+
+    function qualification(agent) {
+        console.log(`intent  =>  qualification`);
         agent.add('My last qualification is intermediate📚✨')
     }
 
-    function Address(agent) {
-        console.log(`intent  =>  Address`);
+    function address(agent) {
+        console.log(`intent  =>  address`);
         agent.add('My address is nazimabad no.2 karachi📚✨')
     }
 
     let intentMap = new Map();
     intentMap.set('Default Welcome Intent', hi);
     intentMap.set('Default Fallback Intent', fallback);
-    intentMap.set('email', email);
-    intentMap.set('phone', phone);
-    intentMap.set('cnic', cnic);
-    intentMap.set('Dateofbirth', Dateofbirth);
-    intentMap.set('fullname', Fullname);
-    intentMap.set('Gender', Gender);
-    intentMap.set('Qualification', Qualification);
-    intentMap.set('Address', Address);
+    intentMap.set('Emails', email);
+    intentMap.set('Phone-no', phone);
+    intentMap.set('Cnic_no', cnic);
+    intentMap.set('Dateofbirth', dateofbirth);
+    intentMap.set('Full-name', fullname);
+    intentMap.set('Gender', gender);
+    intentMap.set('Qualification', qualification);
+    intentMap.set('Address', address);
     agent.handleRequest(intentMap);
 });
 
@@ -149,7 +138,7 @@ const transporter = nodemailer.createTransport({
 async function main() {
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: '"Maddison Foo Koch 👻" <sherrymerry20@gmail.com>', // sender address
+    from: '"Shahryar waseem👻" <sherrymerry20@gmail.com>', // sender address
     to: "hammadn788@gmail.com", // list of receivers
     subject: "Hello ✔", // Subject line
     text: "Hello world?", // plain text body
