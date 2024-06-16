@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "portfolio-nlhr",
+  "private_key_id": "dcbb5580aefc03154e5576703fe4d057fed17665",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCfxWH9KIoNRhsL\nY0Zyf9kBFKIAz8fnugFTbRotuBcv3bv9P7DeOdghDJIpNoEwnueQpTpvnsqHLnuw\nYBBrGbAMLjU1UbzSlatBA5pWN/WS6T+fhTCGNWOcRYyU1tgmx+RCdlYbaSkOSf/5\nDYVi2WPVdfR43f4Fl45PjCIaNosCauFVBktmwY2NpspWqsLuAL1NWztLwcmkq0pD\nnuqHuz2dyRf2hIALwvCkmf582M+7lUtq462G0o2cUYeVQv/bdrvHHotaLIt6uLGi\nlulz9xxHaMLb6c6hBLsudPQG3cmGvB7y3nfhsSSQtlZQoLHvZJld2JBaggdDTFrK\nlt8a9CttAgMBAAECggEACWnQKyr4b0k0jmzHYsmgIQ10lX2of68YkucKj2K9/mtD\nmqJT4dP8Euwf+QOlzTqNRC1xIKvi07tHhg3FLnEWAmiRaI0+Kl4dHIGl+qouzkXK\na7QTW2TuKstUgu/hl4GhfRmK7YI6Nk8rRUdfYBTd/IM+wyoCUidz7cFTLjB7D+7h\nEFRwqrQMBYXg16EEWaXC0GbtQlPO9ylHXm7JMkzylupnJt2XofsIvLBeDHEcJpA6\ntkmfcVKpTXdpK42WBUjHvx7xoxP2KQth8gA9GDhvLkB4qdZCICs89AK/hmOrrkVB\nUo34vNV3rffQ42EXm+nbNIyqIa0X9wKpPAB7DHeN1QKBgQDfcz9YfVKRFdxs8E+t\nNuepzNon1C7uMvPHLYHtTy5iPOTZ0tR5nLvFJnc+awAtsNP8U7JGnPljYJePZD1K\nYpQpwJo6VoSWv0eIBTyXFMA88XShLEKWf7fZi/s4P3P1UCVyOuN6St6poH+ffOKU\nCdpAXCGlMMDDP3Bn6xwu95bmwwKBgQC3C3STvn2b9JTk30kLGeedZLav6o9ycoF2\nSAa34C7N/sAYgtMtka1c20niWXx08T4c8ZHWesflK2Xg/6eyTtOh0hhBYpqpUjyU\nGoNwmjHrtQfgGvV21vbdRVXlfa9rY4F5+XvDFpreWUZGjP5GtUgbYN82Ncma9G1C\nn/IW58JiDwKBgBHnRwUNDYeIa9/ipU+onYkyW6xjSNtXA8dKsyVTedDvNhrp1JJl\n53mVamp64knG6EVIY3la7HR08c/QZUTHfz2VLAZOllMJwm54lPE5/Wkko4aiaDds\nxktM9vT7yIu4PzfW1hEfXJXUwUUDGZho7a7Icv2sWVWLiLMa2Gg++D1HAoGAWI4I\nNjogVsT7C8cidWZw8Wp6H51hDMNs8qZh6a9htXMbyD/ynsctkhDdK86TMZhMroAI\nSDVaY/qc7T+CB/eu10jnRyrHHEeW2ygAkwdmQ1xvlPI18uqIv//9UGt/5Hpdd39F\natqSziNupk8r7VVirywskPNwt7Cs82CiJIa3Oe0CgYAafGBJSMZPXSD3SVEEzc+V\nKZzLozR8ZDwS48sdlzXqw+B4gpC8JJm9ZK0o3TeOTqD3b/bKjlynBZNG3Jw9weDb\nT0Ht2sbTTC0m6H1rKBKfW+ve6cfIvFbsAxMf+SP995aNuJAf2MvzwTJjRioW7HyM\nOwQ4nHoaWwTyvox0qur/RQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "smit-bot@portfolio-nlhr.iam.gserviceaccount.com",
+  "client_id": "115691033450471742477",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/smit-bot%40portfolio-nlhr.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
