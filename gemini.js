@@ -116,15 +116,15 @@ webApp.post('/dialogflow', async (req, res) => {
             </head>
             <body>
                 <div class="container">
-                    <h1>Registration Form Details</h1>
+                    <h1>SMIT Registration Form Details</h1>
                     <p>Thank you for contacting us! Here are your registration form details:</p>
                     <ul>
-                        <li><strong>Name:</strong> Shahryar Waseem</li>
+                        <li><strong>Name:</strong> Shahryar </li>
+                        <li><strong>Full Name:</strong> Shahryar Waseem</li>
                         <li><strong>Email:</strong> sherrymerry20@gmail.com</li>
                         <li><strong>Phone:</strong> 03242080440</li>
                         <li><strong>CNIC:</strong> 42101-9343232-9</li>
                         <li><strong>Date of Birth:</strong> 17/11/2002</li>
-                        <li><strong>Full Name:</strong> Shahryar Waseem</li>
                         <li><strong>Gender:</strong> Male</li>
                         <li><strong>Qualification:</strong> Intermediate</li>
                         <li><strong>Address:</strong> Nazimabad no.2 Karachi</li>
